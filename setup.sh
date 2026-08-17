@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+# Load nvm and use Node 20
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if command -v nvm &> /dev/null; then
+  nvm use 20 || nvm install 20
+fi
+
 echo "==> Installing dbt + DuckDB..."
 pip install dbt-duckdb --quiet
 
